@@ -1,66 +1,79 @@
-let array = [];
-var acertos = [];
-var contAcertos = [];
+var contAcertos = 0;
 
-let pergunta1 = {
-  pergunta: "Qual é a metade de 4",
-  opcoes: [1, 2, 3, 4],
-  resposta: 1,
-  lido: false,
-};
+let array = [
+  {
+    pergunta: "Qual é a metade de 4",
+    opcoes: ["1", "2", "3", "4"],
+    resposta: "2",
+  },
+  {
+    pergunta: "Quem marcou o gol da final da champions de 2021/2022",
+    opcoes: ["Vini", "Benzema", "kanye west", "Messi"],
+    resposta: "Vini",
+  },
+  {
+    pergunta: "IPHONE OU SAMSUNG",
+    opcoes: ["SIM", "NÃO"],
+    resposta: "SIM",
+  },
+  {
+    pergunta: "Em que ano terminou a 2 guerra mundial",
+    opcoes: ["1947", "1938", "2003", "1945"],
+    resposta: "1945",
+  },
+  {
+    pergunta: "sla porra",
+    opcoes: ["1947", "1938", "2003", "1945"],
+    resposta: "1945",
+  },
+];
 
-let pergunta2 = {
-  pergunta: "bla",
-  opcoes: [12, 23, 34, 45],
-  resposta: 1,
-  lido: false,
-};
-
-let pergunta3 = {
-  pergunta: "bla bla",
-  opcoes: [16, 27, 38, 49],
-  resposta: 1,
-  lido: false,
-};
-
-let pergunta4 = {
-  pergunta: "bla bla bla",
-  opcoes: [11, 29, 33, 42],
-  resposta: 1,
-  lido: false,
-};
-
-array[0] = pergunta1;
-array[1] = pergunta2;
-array[2] = pergunta3;
-array[3] = pergunta4;
+var form = document.querySelector("#form");
+var botao = document.querySelector("#btn-salvar");
 
 document.addEventListener("DOMContentLoaded", function () {
-  mudarPergunta();
+  proximo();
+});
+
+botao.addEventListener("click", function (event) {
+  event.preventDefault();
+  verificarResposta(form.q1.value, array);
+  if (inicio == array.length) {
+    console.log("cabo");
+  } else {
+    proximo();
+  }
 });
 
 var inicio = 0;
 
-function mudarPergunta() {
+function verificarResposta(respostaUsuario, array) {
+  var re = array[inicio].resposta;
+  console.log(re);
+  if (respostaUsuario == re) {
+    console.log("acerto");
+    contAcertos++;
+  }
+
+  inicio++;
+}
+
+function proximo() {
   var pergunta = document.getElementById("pergunta");
 
   var per = array[inicio];
-  
+
   pergunta.innerHTML = per.pergunta;
   // Seleciona todos os elementos <input> do tipo radio com o name "respostas"
-  var radios = document.getElementsByName("respostas");
-
+  var radios = document.getElementsByName("q1");
   // Verifica cada elemento radio e altera o texto associado
   radios.forEach((radio, index) => {
-    // Acessa o nó de texto seguinte ao <input>, que é onde está o texto associado
+    radio.value = per.opcoes[index]; // Acessa o nó de texto seguinte ao <input>, que é onde está o texto associado
     var textoNode = radio.nextSibling;
-
     // Verifica se o nó de texto existe e se o índice é válido
     if (textoNode && textoNode.nodeType === Node.TEXT_NODE) {
       textoNode.nodeValue = " " + per.opcoes[index];
     }
   });
-
-  inicio++
+  console.log(contAcertos);
 }
-

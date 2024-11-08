@@ -5,117 +5,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Document</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
   <form id="form">
     <h3 id="pergunta">
-      1. Which tag should used to represent the "header" of a document?
+      1. Which tag should be used to represent the "header" of a document?
     </h3>
     <ul>
-      <li><input type="radio" name="q1" value="1" />head</li>
-      <li><input type="radio" name="q1" value="1" />header</li>
-      <li><input type="radio" name="q1" value="1" />heading</li>
-      <li><input type="radio" name="q1" value="1" />main</li>
+      <li><input type="radio" name="q1" value="1" required /> resposta 1</li>
+      <li><input type="radio" name="q1" value="2" /> resposta 2</li>
+      <li><input type="radio" name="q1" value="3" /> resposta 3</li>
+      <li><input type="radio" name="q1" value="4" /> resposta 4</li>
     </ul>
     <button id="btn-salvar" type="submit">Submit</button>
   </form>
-  <script>
-    let array = [];
-    var contAcertos = 0;
-
-    let pergunta1 = {
-      pergunta: "Qual é a metade de 4",
-      opcoes: ["1", "2", "3", "4"],
-      resposta: "1",
-      lido: false,
-    };
-
-    let pergunta2 = {
-      pergunta: "bla",
-      opcoes: ["12", "23", "34", "45"],
-      resposta: "12",
-      lido: false,
-    };
-
-    let pergunta3 = {
-      pergunta: "bla bla",
-      opcoes: ["16", "27", "38", "49"],
-      resposta: "38",
-      lido: false,
-    };
-
-    let pergunta4 = {
-      pergunta: "bla bla bla",
-      opcoes: ["11", "29", "33", "42"],
-      resposta: "42",
-      lido: false,
-    };
-
-    /*
-    let array = [
-      {
-        pergunta: x
-      },
-      {
-        
-      }
-    ]
-    */
-
-    array[0] = pergunta1;
-    array[1] = pergunta2;
-    array[2] = pergunta3;
-    array[3] = pergunta4;
-
-    var form = document.querySelector("#form");
-    var botao = document.querySelector("#btn-salvar");
-
-    document.addEventListener("DOMContentLoaded", function () {
-      proximo();
-    });
-
-    botao.addEventListener("click", function (event) {
-      event.preventDefault();
-      verificarResposta(form.q1.value, array);
-      proximo();
-    });
-
-    var inicio = 0;
-
-    function verificarResposta(respostaUsuario, array) {
-      var re = array[inicio].resposta;
-      console.log(re);
-      if (respostaUsuario == re) {
-        console.log("acerto")
-        contAcertos++;
-      }
-      if (inicio + 1 < array.length) {
-        inicio++;
-      }
-    }
-
-    function proximo() {
-      var pergunta = document.getElementById("pergunta");
-
-      var per = array[inicio];
-
-      pergunta.innerHTML = per.pergunta;
-      // Seleciona todos os elementos <input> do tipo radio com o name "respostas"
-      var radios = document.getElementsByName("q1");
-      // Verifica cada elemento radio e altera o texto associado
-      radios.forEach((radio, index) => {
-        radio.value = per.opcoes[index]          // Acessa o nó de texto seguinte ao <input>, que é onde está o texto associado
-        var textoNode = radio.nextSibling;
-        // Verifica se o nó de texto existe e se o índice é válido
-        if (textoNode && textoNode.nodeType === Node.TEXT_NODE) {
-          textoNode.nodeValue = " " + per.opcoes[index];
-        } 
-
-      });
-      console.log(contAcertos)
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 
 </html>
