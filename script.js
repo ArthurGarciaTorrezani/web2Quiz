@@ -36,7 +36,21 @@ let array = [
         opcoes: ["Paulo Kogos", "Karl Marx", "Neymar", "Tomaz Correa"],
         resposta: "Tomaz Correa",
     },
-
+    {
+        pergunta: "A passiva de regeneração do Garen, escala com:",
+        opcoes: ["vida", "level", "ad", "ap"],
+        resposta: "",
+    },
+    {
+        pergunta: "Qual o ph da água",
+        opcoes: ["6", "4", "8", "7"],
+        resposta: "7",
+    },
+    {
+        pergunta: "Em um battle royale, quem ganharia",
+        opcoes: ["rafi", "miguel", "long legs", "fabianovic"],
+        resposta: "rafi",
+    },
 ];
 
 var form = document.querySelector("#form");
@@ -50,7 +64,7 @@ botao.addEventListener("click", function (event) {
     event.preventDefault();
     verificarResposta(form.q1.value, array);
     if (inicio == array.length) {
-        form.innerHTML = `TERMINOU!!!!! VOCÊ ACERTOU ${contAcertos} RESPOSTAS!!!!!`
+        form.innerHTML = `TERMINOU!!!!! VOCÊ ACERTOU ${contAcertos} de ${array.length} !!!!!`
     } else {
         proximo();
     }
