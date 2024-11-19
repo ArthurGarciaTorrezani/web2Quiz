@@ -39,7 +39,7 @@ let array = [
     {
         pergunta: "A passiva de regeneração do Garen, escala com:",
         opcoes: ["vida", "level", "ad", "ap"],
-        resposta: "",
+        resposta: "level",
     },
     {
         pergunta: "Qual o ph da água",
